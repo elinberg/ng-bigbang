@@ -1,0 +1,11 @@
+<div *ngIf="player">
+<div>Pick an object</div>
+<ul class="objects">
+    <li *ngFor="#object of objects"
+        (click)="selectObject(object)"
+        [class.selected]="object === selectedObject">
+        <span class="badge">{{object.id}}</span> {{object.name}}
+    </li>
+</ul>
+<object-detail *ngIf="selectedObject" [object]="selectedObject"></object-detail>
+</div>
