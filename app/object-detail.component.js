@@ -5,15 +5,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('angular2/core');
+var object_service_1 = require('./object.service');
 var ObjectDetailComponent = (function () {
     function ObjectDetailComponent() {
     }
+    ObjectDetailComponent.prototype.go = function (objectId, playerId) {
+        console.log(objectId);
+        alert('Got here');
+    };
+    ObjectDetailComponent.prototype.getResult = function () {
+        var _this = this;
+        this._objService.getResult().then(function (players) { return _this.players = players; });
+    };
     ObjectDetailComponent = __decorate([
         core_1.Component({
             selector: 'object-detail',
             templateUrl: 'app/object-detail.component.html',
             styleUrls: ['app/object-detail.component.css'],
-            inputs: ['object', 'player', 'selectedObject', 'selectedPlayer']
+            inputs: ['object', 'player', 'selectedObject', 'selectedPlayer'],
+            providers: [object_service_1.ObjectService]
         })
     ], ObjectDetailComponent);
     return ObjectDetailComponent;

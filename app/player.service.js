@@ -10,7 +10,7 @@ var Observable_1 = require('rxjs/Observable');
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        this._playersUrl = 'http://localhost:8000/app_dev.php/players';
+        this._playersUrl = 'http://localhost:8000/players';
     }
     PlayerService.prototype.getPlayers = function () {
         return this.http.get(this._playersUrl)

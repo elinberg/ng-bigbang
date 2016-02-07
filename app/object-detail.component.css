@@ -51,3 +51,12 @@
     border-radius: 4px 0px 0px 4px;
 }
 
+button {
+    width:10em:
+    height:1.6em;
+    font-size: 18px;
+    margin-left:.5em;
+    background-color: #EEE;
+    border-radius: 4px 0px 0px 4px;
+    font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
+}
