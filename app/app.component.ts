@@ -10,6 +10,7 @@ import {Http} from "angular2/http";
 import {HTTP_PROVIDERS} from "angular2/http";
 //import {ObjectService} from "./object.service";
 import {ObjectListComponent} from "./object.list.component";
+import {ObjectDetailComponent} from "./object-detail.component";
 
 
 @Component({
@@ -27,12 +28,8 @@ import {ObjectListComponent} from "./object.list.component";
       </li>
     </ul>
     </div>
-    <div style="display: inline-block; width: 20%; vertical-align: top;">
-    <object-list [object]="selectedObject" [player]="selectedPlayer"></object-list>
-    <div style="display: inline-block; width: 20%; vertical-align: top;">
-        <my-player-detail [object]="selectedObject" [player]="selectedObject"></my-player-detail>
-    </div>
-    </div>
+    <object-list [(object)]="selectedObject" [(player)]="selectedPlayer"></object-list>
+
 
 
   `,
@@ -89,7 +86,7 @@ import {ObjectListComponent} from "./object.list.component";
       border-radius: 4px 0px 0px 4px;
     }
   `],
-    directives: [PlayerDetailComponent,ObjectListComponent],
+    directives: [ObjectListComponent,ObjectDetailComponent],
 
     providers: [
         HTTP_PROVIDERS,

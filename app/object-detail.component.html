@@ -1,3 +1,12 @@
-<h2>Choose an Object</h2>
-<div>{{object}}</div>
-</ul>
+
+    <div *ngIf="player">
+        <div>You chose</div>
+        <ul class="results">
+            <li>
+                <span class="badge">{{player.id}}</span> {{player.name}}
+            </li>
+            <li>
+                <span class="badge">{{object.id}}</span> {{object.name}}
+            </li>
+        </ul>
+    </div>

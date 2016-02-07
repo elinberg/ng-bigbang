@@ -8,14 +8,12 @@ var core_1 = require('angular2/core');
 var ObjectDetailComponent = (function () {
     function ObjectDetailComponent() {
     }
-    __decorate([
-        core_1.Input()
-    ], ObjectDetailComponent.prototype, "object");
     ObjectDetailComponent = __decorate([
         core_1.Component({
             selector: 'object-detail',
             templateUrl: 'app/object-detail.component.html',
-            directives: [ObjectDetailComponent]
+            styleUrls: ['app/object-detail.component.css'],
+            inputs: ['object', 'player', 'selectedObject', 'selectedPlayer']
         })
     ], ObjectDetailComponent);
     return ObjectDetailComponent;
