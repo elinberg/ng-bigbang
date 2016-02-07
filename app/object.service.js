@@ -11,13 +11,19 @@ var ObjectService = (function () {
     function ObjectService(http) {
         this.http = http;
         //private _objectsUrl = '/app/object.json';
-        this._objectsUrl = 'http://localhost:8000/objects';
+        this._objectsUrl = 'http://localhost:8000/';
     }
     ObjectService.prototype.getObjects = function () {
-        return this.http.get(this._objectsUrl)
+        return this.http.get(this._objectsUrl + 'objects')
             .toPromise()
             .then(function (res) { return res.json(); }, this.handleError)
             .then(function (data) { console.log('Objects:' + data); return data; });
+    };
+    ObjectService.prototype.getResults = function (playerId, objId) {
+        return this.http.get(this._objectsUrl + 'play/' + playerId + '/' + objId)
+            .toPromise()
+            .then(function (res) { return res.json(); }, this.handleError)
+            .then(function (data) { console.log('Results:', data); return data; });
     };
     ObjectService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

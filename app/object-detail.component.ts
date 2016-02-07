@@ -1,7 +1,7 @@
 import {Component, Input} from 'angular2/core';
 import {Object} from './object';
 import {ObjectService} from './object.service';
-
+import {Results} from './results'
 
 @Component({
     selector: 'object-detail',
@@ -12,20 +12,21 @@ import {ObjectService} from './object.service';
 })
 
 export class ObjectDetailComponent {
+    constructor( private _objService: ObjectService){
 
-    private _objService:ObjectService;
+    }
 
-go(objectId, playerId){
+    public results:Results[];
 
-    console.log(objectId);
-    alert('Got here');
+    go(oid, pid){
 
+        console.log(oid);
+        this.results = this.getResult(pid,oid);
 
+    }
 
-}
-
-    getResult(){
-        this._objService.getResult().then(players => this.players = players);
+    getResult(oid,pid){
+        this._objService.getResults(pid,oid).then(results => this.results = results);
     }
 
 }

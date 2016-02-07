@@ -3,6 +3,7 @@ import {Http, Response} from 'angular2/http'
 import {Headers, RequestOptions} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 import {Object} from "./object";
+import {Results} from './results'
 
 
 @Injectable()
@@ -11,13 +12,21 @@ export class ObjectService {
     }
 
     //private _objectsUrl = '/app/object.json';
-    private _objectsUrl = 'http://localhost:8000/objects';
+    private _objectsUrl = 'http://localhost:8000/';
 
     getObjects() {
-        return this.http.get(this._objectsUrl)
+        return this.http.get(this._objectsUrl+'objects')
             .toPromise()
             .then(res => <Object[]> res.json(), this.handleError)
             .then(data => { console.log('Objects:'+data); return data; });
+    }
+
+    getResults(playerId,objId){
+        return this.http.get(this._objectsUrl+'play/'+playerId+'/'+objId)
+            .toPromise()
+            .then(res => <Results[]> res.json(), this.handleError)
+            .then(data => { console.log('Results:',data); return data; });
+
     }
 
     private handleError (error: Response) {

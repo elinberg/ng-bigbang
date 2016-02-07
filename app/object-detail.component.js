@@ -7,15 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require('angular2/core');
 var object_service_1 = require('./object.service');
 var ObjectDetailComponent = (function () {
-    function ObjectDetailComponent() {
+    function ObjectDetailComponent(_objService) {
+        this._objService = _objService;
     }
-    ObjectDetailComponent.prototype.go = function (objectId, playerId) {
-        console.log(objectId);
-        alert('Got here');
+    ObjectDetailComponent.prototype.go = function (oid, pid) {
+        console.log(oid);
+        this.results = this.getResult(pid, oid);
     };
-    ObjectDetailComponent.prototype.getResult = function () {
+    ObjectDetailComponent.prototype.getResult = function (oid, pid) {
         var _this = this;
-        this._objService.getResult().then(function (players) { return _this.players = players; });
+        this._objService.getResults(pid, oid).then(function (results) { return _this.results = results; });
     };
     ObjectDetailComponent = __decorate([
         core_1.Component({
