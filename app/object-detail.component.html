@@ -9,13 +9,17 @@
                 <span class="badge">{{object.id}}</span> {{object.name}}
             </li>
         </ul>
-        <button (click)="go(player.id,object.id)" class="button badge">1 2 3 Go!</button>
-        <div class="result" *ngIf="results">
+        <button (click)="go(player.id,object.id)" class="button">
+            <img style="width: 30px" src='http://www.clker.com/cliparts/5/M/t/6/k/p/circular-recycle-arrows-th.png' alt='Circular Recycle Arrows clip art' />
+            <div>1 2 3 Go!</div>
+        </button>
 
-                <div>Sheldon threw {{results.sheldon}}</div>
-                <div>{{results.player}} threw {{results.choice}}!</div>
-                <div *ngIf="results.result_id < 2">{{results.player}} {{results.result}}</div>
-                <div *ngIf="results.result_id > 1">{{results.result}}</div>
-        </div>
 
+    </div>
+    <div style="" class="result" *ngIf="results">
+
+        <div>Sheldon threw {{results.sheldon}}</div>
+        <div>{{results.player}} threw {{results.choice}}!</div>
+        <div *ngIf="results.result_id < 2">{{results.player}} {{results.result}}</div>
+        <div *ngIf="results.result_id > 1">{{results.result}}</div>
     </div>

@@ -1,4 +1,4 @@
-<div *ngIf="player" style="display: inline-block; width: 20%; vertical-align: top;">
+<div *ngIf="player" class="lefty">
 <div>Pick an object</div>
 <ul class="objects">
     <li *ngFor="#object of objects"
@@ -8,6 +8,6 @@
     </li>
 </ul>
 </div>
-<div *ngIf="player" style="display: inline-block; width: 20%; vertical-align: top;">
+<div *ngIf="player" class="lefty">
     <object-detail style="width:100%" [(object)]="selectedObject" [(player)]="selectedPlayer"></object-detail>
 </div>

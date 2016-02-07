@@ -25,6 +25,12 @@ var ObjectService = (function () {
             .then(function (res) { return res.json(); }, this.handleError)
             .then(function (data) { console.log('Results:', data); return data; });
     };
+    ObjectService.prototype.getStats = function () {
+        return this.http.get(this._objectsUrl + 'stats')
+            .toPromise()
+            .then(function (res) { return res.json(); }, this.handleError)
+            .then(function (data) { console.log('Stats Results:', data); return data; });
+    };
     ObjectService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

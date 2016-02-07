@@ -51,14 +51,32 @@
     border-radius: 4px 0px 0px 4px;
 }
 
-button {
+.button {
     width:10em:
     height:1.6em;
-    font-size: 18px;
+    font-size: 16px;
     margin-left:.5em;
     background-color: #EEE;
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 10px;
     font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
+    padding-top: .1em;
+    padding-bottom: .1em;
+    padding-right: 1em;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    line-height:1em;
+
+}
+
+button img{
+    padding-top: .5em;
+}
+
+.button div {
+    display: inline-block;
+    vertical-align: middle;
+    padding-bottom: 1em;
 }
 
 .result{
@@ -72,6 +90,10 @@ button {
     padding:6px;
 }
 
-HTML{
+.lefty{
+    display: inline-block; width: 20%; vertical-align: top;
+}
+
+body{
     min-width:875px;
 }

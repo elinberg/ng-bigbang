@@ -8,9 +8,12 @@ import {PlayerService} from './player.service';
 import {provide}           from 'angular2/core';
 import {Http} from "angular2/http";
 import {HTTP_PROVIDERS} from "angular2/http";
-//import {ObjectService} from "./object.service";
+import {ObjectService} from "./object.service";
 import {ObjectListComponent} from "./object.list.component";
 import {ObjectDetailComponent} from "./object-detail.component";
+import {StatsComponent} from './stats.component';
+import {Stats} from './stats';
+
 
 
 @Component({
@@ -29,8 +32,10 @@ import {ObjectDetailComponent} from "./object-detail.component";
     </ul>
     </div>
     <object-list [(object)]="selectedObject" [(player)]="selectedPlayer"></object-list>
-
-
+    <div *ngIf="true" style="border: dashed 1px black; height:30em" class="left">
+        <stats-grid [(stats)]="stats"></stats-grid>
+    </div>
+    {{stats}}
 
   `,
     styles:[`
@@ -85,12 +90,19 @@ import {ObjectDetailComponent} from "./object-detail.component";
       margin-right: .8em;
       border-radius: 4px 0px 0px 4px;
     }
+    .lefty{
+    display: inline-block; width: 100%; vertical-align: top;
+}
+
   `],
-    directives: [ObjectListComponent,ObjectDetailComponent],
+    directives: [ObjectListComponent,ObjectDetailComponent,StatsComponent],
+    inputs:['stats'],
 
     providers: [
         HTTP_PROVIDERS,
         PlayerService,
+        ObjectService,
+        StatsComponent
     ]
 
 })
@@ -98,11 +110,15 @@ import {ObjectDetailComponent} from "./object-detail.component";
 export class AppComponent implements OnInit {
     public title = 'Big Bang';
     public players: Player[];
-
+    public stats: Stats[];
     public selectedPlayer: Player;
 
 
-    constructor( private _playerService: PlayerService, public http: Http) { }
+    constructor( private _playerService: PlayerService, public http: Http, private _objectService: ObjectService) {
+
+
+
+    }
 
 
 
@@ -114,14 +130,20 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.getPlayers();
-        //this.getObjects();
+        this.getStats();
 
+
+    }
+
+    getStats(){
+
+        this._objectService.getStats().then(stats => this.stats = stats);
     }
 
     onSelect(player: Player) {
 
         this.selectedPlayer = player;
-
+        this.getStats();
 
     }
 

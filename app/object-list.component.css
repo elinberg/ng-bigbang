@@ -51,3 +51,7 @@
     border-radius: 4px 0px 0px 4px;
 }
 
+.lefty{
+    display: inline-block; width: 20%; vertical-align: top; min-width: 150px;
+}
+

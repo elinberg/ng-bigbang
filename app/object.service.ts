@@ -4,6 +4,7 @@ import {Headers, RequestOptions} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 import {Object} from "./object";
 import {Results} from './results'
+import {Stats} from "./stats";
 
 
 @Injectable()
@@ -26,6 +27,14 @@ export class ObjectService {
             .toPromise()
             .then(res => <Results[]> res.json(), this.handleError)
             .then(data => { console.log('Results:',data); return data; });
+
+    }
+
+    getStats(){
+        return this.http.get(this._objectsUrl+'stats')
+            .toPromise()
+            .then(res => <Stats[]> res.json(), this.handleError)
+            .then(data => { console.log('Stats Results:',data); return data; });
 
     }
 
