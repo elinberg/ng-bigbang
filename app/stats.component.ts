@@ -1,13 +1,13 @@
 import {Component,Input,OnInit} from 'angular2/core';
 import {ObjectService} from './object.service';
 import {Stats} from 'stats';
-//import {NgGrid} from 'angular2-grid/dist/NgGrid';
+
 
 @Component({
     selector: 'stats-grid',
     templateUrl:'./app/stats-component.html',
     directives: [],
-    stylesUrl:['./app/stats-component.css']
+    styleUrls:['./app/stats-component.css']
 
 })
 export class StatsComponent {
@@ -31,7 +31,6 @@ export class StatsComponent {
 
     ngOnInit(){
         this.getStats();
-        console.log('GOT HERE !!!!!!!!!!!!!!!!');
     }
 
     getStats(){

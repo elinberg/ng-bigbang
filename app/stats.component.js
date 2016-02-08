@@ -5,7 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('angular2/core');
-//import {NgGrid} from 'angular2-grid/dist/NgGrid';
 var StatsComponent = (function () {
     function StatsComponent(objService) {
         this.objService = objService;
@@ -23,7 +22,6 @@ var StatsComponent = (function () {
     }
     StatsComponent.prototype.ngOnInit = function () {
         this.getStats();
-        console.log('GOT HERE !!!!!!!!!!!!!!!!');
     };
     StatsComponent.prototype.getStats = function () {
         var _this = this;
@@ -34,7 +32,7 @@ var StatsComponent = (function () {
             selector: 'stats-grid',
             templateUrl: './app/stats-component.html',
             directives: [],
-            stylesUrl: ['./app/stats-component.css']
+            styleUrls: ['./app/stats-component.css']
         })
     ], StatsComponent);
     return StatsComponent;

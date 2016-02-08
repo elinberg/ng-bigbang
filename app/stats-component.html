@@ -1,7 +1,14 @@
-<div *ngIf="true" style="display: inline-block; width: 20%; vertical-align: top;">
-<div class="grid-placeholder grid">
-    <div class="grid-item" *ngFor="#stat of columnDefs">
-        <div class="cell " style="border:solid 1px black;width:100%;text-align: center">{{stat.headerName}}</div>
+<div *ngIf="true" style="">
+
+    <div class="header">
+        <div class="headerCell" *ngFor="#stat of columnDefs">{{stat.headerName}}</div>
     </div>
-</div>
+
+    <div class="row" *ngFor="#row of stats">
+    <div class="cell" *ngFor="#col of columnDefs">
+        {{row[col.field]}}
+    </div>
+    </div>
+
+
 </div>

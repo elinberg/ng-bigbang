@@ -20,7 +20,7 @@ import {Stats} from './stats';
     selector: 'my-app',
     template:`
     <h1>{{title}}</h1>
-    <div style="display: inline-block; width: 20%; vertical-align: top;">
+    <div class="lefty">
 
     <div>Choose a Player</div>
     <ul class="players">
@@ -32,10 +32,9 @@ import {Stats} from './stats';
     </ul>
     </div>
     <object-list [(object)]="selectedObject" [(player)]="selectedPlayer"></object-list>
-    <div *ngIf="true" style="border: dashed 1px black; height:30em" class="left">
+    <div *ngIf="selectedObject" style="border: solid 1px black;" class="left">
         <stats-grid [(stats)]="stats"></stats-grid>
     </div>
-    {{stats}}
 
   `,
     styles:[`
@@ -91,8 +90,17 @@ import {Stats} from './stats';
       border-radius: 4px 0px 0px 4px;
     }
     .lefty{
-    display: inline-block; width: 100%; vertical-align: top;
+    display: inline-block;
+    }
+    @media (max-width: 700px) {
+    .lefty {
+        min-width: 100px !important;
+        height: auto !important;
+        padding: 10px;
+    }
+
 }
+
 
   `],
     directives: [ObjectListComponent,ObjectDetailComponent,StatsComponent],

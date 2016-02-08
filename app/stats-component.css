@@ -1,30 +1,45 @@
-.grid {
-    background-color: #efefef;
-}
-
-.grid-item {
-    background-color: #ffffff;
-    -webkit-transition: width 0.25s, height 0.25s, left 0.25s, top 0.25s, right 0.25s, bottom 0.25s;
-    -moz-transition: width 0.25s, height 0.25s, left 0.25s, top 0.25s, right 0.25s, bottom 0.25s;
-    -o-transition: width 0.25s, height 0.25s, left 0.25s, top 0.25s, right 0.25s, bottom 0.25s;
-    transition: width 0.25s, height 0.25s, left 0.25s, top 0.25s, right 0.25s, bottom 0.25s;
-}
-
-.grid-item:active, .grid-item.moving {
-    z-index: 2;
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    transition: none;
-}
-
-.grid-placeholder {
-    background-color: rgba(0, 0, 0, 0.3);
-}
 
 .cell{
-    display: inline-block;
+    display: table-cell !important;
+    width:15%;
+    border:solid 1px black;
+    text-align: center;
+
+    padding:1px;
+
+}
+
+.headerCell{
+    display: table-cell !important;
+    width:15%;
+    border:solid 1px black;
+    text-align: center;
+    background-color: black;
+    padding:1px;
+
+}
+
+.header{
+    display: table-row !important;
     width:9%;
+    border:solid 1px white;
+    text-align: center;
+    background-color:black;
+    color:white;
+    font-family: Arial;
+    font-size: .7em;
+    text-align: center; margin: 5px;
+}
+.row{
+    display: table-row !important;
+    width:9%;
+    border:solid 1px white;
+    text-align: center;
+    background-color: white;
+    color:black;
+    font-family: Arial;
+    font-size: .7em;
+    text-align: center; margin: 5px;
 }
 
 @media (max-width: 767px) {
