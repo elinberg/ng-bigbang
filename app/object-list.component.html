@@ -1,4 +1,4 @@
-<div *ngIf="player" class="lefty">
+<div *ngIf="true" class="lefty">
 <div>Pick an object</div>
 <ul class="objects">
     <li *ngFor="#object of objects"
@@ -7,7 +7,4 @@
         <span class="badge">{{object.id}}</span> {{object.name}}
     </li>
 </ul>
-</div>
-<div *ngIf="player" class="lefty">
-    <object-detail style="width:100%" [(object)]="selectedObject" [(player)]="selectedPlayer"></object-detail>
 </div>

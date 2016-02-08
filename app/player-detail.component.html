@@ -1,0 +1,8 @@
+<div>Choose a Player</div>
+<ul class="players">
+    <li *ngFor="#player of players"
+        [class.selected]="player === selectedPlayer"
+        (click)="onSelect(player)">
+        <span class="badge">{{player.id}}</span> {{player.name}}
+    </li>
+</ul>

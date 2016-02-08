@@ -1,5 +1,5 @@
 
-    <div *ngIf="player">
+    <div *ngIf="true">
         <div>You chose</div>
         <ul class="results">
             <li>
@@ -15,7 +15,7 @@
         </button>
 
 
-    </div>
+
     <div style="" class="result" *ngIf="results">
 
         <div>Sheldon threw {{results.sheldon}}</div>
@@ -23,3 +23,6 @@
         <div *ngIf="results.result_id < 2">{{results.player}} {{results.result}}</div>
         <div *ngIf="results.result_id > 1">{{results.result}}</div>
     </div>
+
+    </div>
+

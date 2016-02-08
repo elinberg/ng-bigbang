@@ -1,8 +1,9 @@
-import {Component, OnInit}   from 'angular2/core';
+import {Component, OnInit,EventEmitter,Output}   from 'angular2/core';
 import {provide}           from 'angular2/core';
 import {Object}                from './object';
 import {ObjectDetailComponent} from './object-detail.component';
 import {ObjectService}         from './object.service';
+import {Player}                 from './player'
 
 @Component({
     selector:    'object-list',
@@ -10,7 +11,7 @@ import {ObjectService}         from './object.service';
     directives:  [ObjectDetailComponent],
     styleUrls: ['app/object-list.component.css'],
     providers:   [ObjectService],
-    inputs: ['player','object']
+    inputs: ['player','object','selectedPlayer','selectedObject']
 })
 /*
  export class ObjectListComponent { ... }
@@ -22,9 +23,10 @@ export class ObjectListComponent implements OnInit {
     constructor(private _service: ObjectService){ }
 
     public objects:Object[];
-    public object: Object;
-    public players: Object[];
-    public player: Object;
+    public selectedObject: Object;
+    public players: Player[];
+    public selectedPlayer: Player;
+    @Output() upDateDetail:EventEmitter<boolean> = new EventEmitter();
 
     ngOnInit(){
 
@@ -36,9 +38,13 @@ export class ObjectListComponent implements OnInit {
         this._service.getObjects().then(objects => this.objects = objects);
     }
 
-    selectObject(object: Object, player Player) {
+    selectObject(object: Object, player: Player) {
         this.selectedObject = object;
         this.selectedPlayer = player;
         console.log('SelectedObject:',object, player);
+    }
+
+    updateDetail(obj){
+
     }
 }

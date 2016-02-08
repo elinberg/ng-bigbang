@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input, OnInit} from 'angular2/core';
 import {Object} from './object';
 import {ObjectService} from './object.service';
 import {Results} from './results'
@@ -7,11 +7,11 @@ import {Results} from './results'
     selector: 'object-detail',
     templateUrl:'app/object-detail.component.html',
     styleUrls:['app/object-detail.component.css'],
-    inputs: ['object','player','selectedObject','selectedPlayer'],
+    inputs: ['object','player'],
     providers:   [ObjectService],
 })
 
-export class ObjectDetailComponent {
+export class ObjectDetailComponent implements OnInit{
     constructor( private _objService: ObjectService){
 
     }

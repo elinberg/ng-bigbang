@@ -10,6 +10,7 @@ var object_service_1 = require('./object.service');
 var ObjectListComponent = (function () {
     function ObjectListComponent(_service) {
         this._service = _service;
+        this.upDateDetail = new core_1.EventEmitter();
     }
     ObjectListComponent.prototype.ngOnInit = function () {
         this.objects = this.getObjects();
@@ -19,11 +20,15 @@ var ObjectListComponent = (function () {
         this._service.getObjects().then(function (objects) { return _this.objects = objects; });
     };
     ObjectListComponent.prototype.selectObject = function (object, player) {
-        if (player === void 0) { player = Player; }
         this.selectedObject = object;
         this.selectedPlayer = player;
         console.log('SelectedObject:', object, player);
     };
+    ObjectListComponent.prototype.updateDetail = function (obj) {
+    };
+    __decorate([
+        core_1.Output()
+    ], ObjectListComponent.prototype, "upDateDetail");
     ObjectListComponent = __decorate([
         core_1.Component({
             selector: 'object-list',
@@ -31,7 +36,7 @@ var ObjectListComponent = (function () {
             directives: [object_detail_component_1.ObjectDetailComponent],
             styleUrls: ['app/object-list.component.css'],
             providers: [object_service_1.ObjectService],
-            inputs: ['player', 'object']
+            inputs: ['player', 'object', 'selectedPlayer', 'selectedObject']
         })
     ], ObjectListComponent);
     return ObjectListComponent;

@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit, Input, Output,EventEmitter} from 'angular2/core';
 import {HTTP_BINDINGS}  from 'angular2/http';
 import {Observable}       from 'rxjs/Observable';
 import {Object} from './object';
@@ -19,92 +19,46 @@ import {Stats} from './stats';
 @Component({
     selector: 'my-app',
     template:`
-    <h1>{{title}}</h1>
+    <h1 (click)="toggleFlip()">{{title}} {{selectedObject}} {{toggleIt}} {{player}}</h1>
     <div class="lefty">
-
-    <div>Choose a Player</div>
-    <ul class="players">
-      <li *ngFor="#player of players"
-        [class.selected]="player === selectedPlayer"
-        (click)="onSelect(player)">
-        <span class="badge">{{player.id}}</span> {{player.name}}
-      </li>
-    </ul>
+        <player-detail [(toggleIt)]="toggleIt" (toggle)="onToggle($event)" [(players)]="players"></player-detail>
     </div>
-    <object-list [(object)]="selectedObject" [(player)]="selectedPlayer"></object-list>
-    <div *ngIf="selectedObject" style="border: solid 1px black;" class="left">
+
+    <div *ngIf="toggleIt" class="lefty">
+    <object-list [(selectedObject)]="selectedObject" [(object)]="object" [(player)]="player" [(objects)]="objects" ></object-list>
+    </div>
+
+    <div *ngIf="true" class="lefty">
+        <object-detail  [(player)]="player" [(object)]="object"></object-detail>
+    </div>
+    <div *ngIf="false" style="border: solid 1px black;max-width: 400px" class="left">
         <stats-grid [(stats)]="stats"></stats-grid>
     </div>
 
   `,
     styles:[`
-    .leftAlign {
+    .lefty {
         display:inline-block;
         vertical-align: top;
-        width: 50%;
+        width: 20%;
     }
-    .selected {
-      background-color: #CFD8DC !important;
-      color: white;
-    }
-    .players {
-      margin: 0 0 2em 0;
-      list-style-type: none;
-      padding: 0;
-      width: 10em;
-    }
-    .players li {
-      cursor: pointer;
-      position: relative;
-      left: 0;
-      background-color: #EEE;
-      margin: .5em;
-      padding: .3em 0em;
-      height: 1.6em;
-      border-radius: 4px;
-    }
-    .players li.selected:hover {
-      color: white;
-    }
-    .players li:hover {
-      color: #607D8B;
-      background-color: #EEE;
-      left: .1em;
-    }
-    .players .text {
-      position: relative;
-      top: -3px;
-    }
-    .players .badge {
-      display: inline-block;
-      font-size: small;
-      color: white;
-      padding: 0.8em 0.7em 0em 0.7em;
-      background-color: #607D8B;
-      line-height: 1em;
-      position: relative;
-      left: -1px;
-      top: -4px;
-      height: 1.8em;
-      margin-right: .8em;
-      border-radius: 4px 0px 0px 4px;
-    }
-    .lefty{
-    display: inline-block;
-    }
+
+
     @media (max-width: 700px) {
     .lefty {
-        min-width: 100px !important;
+        min-width: 175px !important;
         height: auto !important;
         padding: 10px;
+        display: inline-block;
     }
 
 }
 
 
   `],
-    directives: [ObjectListComponent,ObjectDetailComponent,StatsComponent],
-    inputs:['stats'],
+    directives: [PlayerDetailComponent,StatsComponent,ObjectListComponent],
+    inputs:['stats','toggleIt'],
+    //outputs:['toggleOutput'],
 
     providers: [
         HTTP_PROVIDERS,
@@ -118,17 +72,33 @@ import {Stats} from './stats';
 export class AppComponent implements OnInit {
     public title = 'Big Bang';
     public players: Player[];
+    public objects: Object[];
     public stats: Stats[];
     public selectedPlayer: Player;
+    public selectedObject: Object;
+    public toggleIt = false;
 
 
     constructor( private _playerService: PlayerService, public http: Http, private _objectService: ObjectService) {
 
+    }
 
+    onToggle(evt){
+        console.log('OnToggle');
+        console.log(evt);
+        this.toggleIt=evt.value;
 
     }
 
+    toggleFlip(){
 
+        this.toggleIt=!this.toggleIt;
+    }
+
+    onDetail(evt){
+        this.selectedObject = evt.value;
+
+    }
 
     getPlayers(){
 
@@ -148,12 +118,7 @@ export class AppComponent implements OnInit {
         this._objectService.getStats().then(stats => this.stats = stats);
     }
 
-    onSelect(player: Player) {
 
-        this.selectedPlayer = player;
-        this.getStats();
-
-    }
 
 }
 

@@ -23,7 +23,7 @@ var ObjectDetailComponent = (function () {
             selector: 'object-detail',
             templateUrl: 'app/object-detail.component.html',
             styleUrls: ['app/object-detail.component.css'],
-            inputs: ['object', 'player', 'selectedObject', 'selectedPlayer'],
+            inputs: ['object', 'player'],
             providers: [object_service_1.ObjectService]
         })
     ], ObjectDetailComponent);
