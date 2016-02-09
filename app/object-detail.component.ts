@@ -8,7 +8,7 @@ import {StatsComponent} from "./stats.component";
 @Component({
     selector: 'object-detail',
     templateUrl:'app/object-detail.component.html',
-    styleUrls:['app/object-detail.component.css'],
+    styleUrls:['app/object-detail.component.css','node_modules/font-awesome/css/font-awesome.css'],
     inputs: ['object','player','toggleDetail'],
     providers:   [ObjectService],
     outputs:['updateStats'],
@@ -23,6 +23,7 @@ export class ObjectDetailComponent implements OnInit{
     public results:Results[];
     public stats:Stats[];
     updateStats = new EventEmitter();
+    public awesome = ['fa-hand-rock-o','fa-hand-paper-o','fa-hand-scissors-o','fa-hand-lizard-o','fa-hand-spock-o'];
 
     go(oid, pid){
 

@@ -56,10 +56,11 @@
     height:1.6em;
     font-size: 16px;
     margin-left:.5em;
-    background-color: #EEE;
+    background-color: #eee;
     border-radius: 10px;
     font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
     padding-top: .1em;
+    color: #000;
     padding-bottom: .1em;
     padding-right: 1em;
     vertical-align: middle;
@@ -80,14 +81,21 @@ button img{
 }
 
 .result{
-    margin-top:2em;
-    width:10em;
-    height:4em;
-    background-color: #0b97c4;
-    color: #FFF;
+
+
+    display: block;
     border: solid 1px black ;
-    border-radius: 4px 0px 0px 4px;
-    padding:6px;
+    margin-top:2em !important;
+    width:7.5em;
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+
+    padding: .6em;
+    height: 3em;
+    border-radius: 4px;
+
 }
 
 .lefty{

@@ -12,6 +12,7 @@ var ObjectListComponent = (function () {
         this.updateParent = new core_1.EventEmitter();
     }
     ObjectListComponent.prototype.ngOnInit = function () {
+        this.awesome = ['fa-hand-rock-o', 'fa-hand-paper-o', 'fa-hand-scissors-o', 'fa-hand-lizard-o', 'fa-hand-spock-o'];
         this.objects = this.getObjects();
     };
     ObjectListComponent.prototype.getObjects = function () {
@@ -27,7 +28,7 @@ var ObjectListComponent = (function () {
         core_1.Component({
             selector: 'object-list',
             templateUrl: 'app/object-list.component.html',
-            styleUrls: ['app/object-list.component.css'],
+            styleUrls: ['app/object-list.component.css', 'node_modules/font-awesome/css/font-awesome.css'],
             providers: [object_service_1.ObjectService],
             inputs: ['object', 'selectedObject', 'toggleIt'],
             outputs: ['updateParent']

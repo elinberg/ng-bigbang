@@ -6,7 +6,7 @@
                 <span class="badge">{{player.id}}</span> {{player.name}}
             </li>
             <li>
-                <span class="badge">{{object.id}}</span> {{object.name}}
+                <span class="badge">{{object.id}}</span> <i class="fa {{awesome[object.id-1]}}"></i> {{object.name}}
             </li>
         </ul>
         <button (click)="go(player.id,object.id)" class="button">
@@ -18,8 +18,8 @@
 
     <div style="" class="result" *ngIf="results">
 
-        <div>Sheldon threw {{results.sheldon}}</div>
-        <div>{{results.player}} threw {{results.choice}}!</div>
+        <div>Sheldon threw <i class="fa {{awesome[results.sheldon - 1]}}"></i></div>
+        <div>{{results.player}} threw  <i class="fa {{awesome[results.choice - 1 ]}}"></i></div>
         <div *ngIf="results.result_id < 2">{{results.player}} {{results.result}}</div>
         <div *ngIf="results.result_id > 1">{{results.result}}</div>
     </div>

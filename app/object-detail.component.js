@@ -11,6 +11,7 @@ var ObjectDetailComponent = (function () {
     function ObjectDetailComponent(_objService) {
         this._objService = _objService;
         this.updateStats = new core_1.EventEmitter();
+        this.awesome = ['fa-hand-rock-o', 'fa-hand-paper-o', 'fa-hand-scissors-o', 'fa-hand-lizard-o', 'fa-hand-spock-o'];
     }
     ObjectDetailComponent.prototype.go = function (oid, pid) {
         console.log('oid', oid);
@@ -26,7 +27,7 @@ var ObjectDetailComponent = (function () {
         core_1.Component({
             selector: 'object-detail',
             templateUrl: 'app/object-detail.component.html',
-            styleUrls: ['app/object-detail.component.css'],
+            styleUrls: ['app/object-detail.component.css', 'node_modules/font-awesome/css/font-awesome.css'],
             inputs: ['object', 'player', 'toggleDetail'],
             providers: [object_service_1.ObjectService],
             outputs: ['updateStats'],

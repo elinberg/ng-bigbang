@@ -4,7 +4,7 @@
     <li *ngFor="#object of objects"
         (click)="selectObject(object,player)"
         [class.selected]="object === selectedObject">
-        <span class="badge">{{object.id}}</span> {{object.name}}
+        <span class="badge">{{object.id}}</span><i class="fa {{awesome[object.id - 1]}}"></i> {{object.name}}
     </li>
 </ul>
 </div>
