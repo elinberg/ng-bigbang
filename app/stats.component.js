@@ -24,15 +24,15 @@ var StatsComponent = (function () {
         this.getStats();
     };
     StatsComponent.prototype.getStats = function () {
-        var _this = this;
-        this.objService.getStats().then(function (stats) { return _this.stats = stats; });
+        this.stats = this.dataSource;
     };
     StatsComponent = __decorate([
         core_1.Component({
             selector: 'stats-grid',
             templateUrl: './app/stats-component.html',
             directives: [],
-            styleUrls: ['./app/stats-component.css']
+            styleUrls: ['./app/stats-component.css'],
+            inputs: ['dataSource', 'stats']
         })
     ], StatsComponent);
     return StatsComponent;

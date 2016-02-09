@@ -7,13 +7,14 @@ import {Stats} from 'stats';
     selector: 'stats-grid',
     templateUrl:'./app/stats-component.html',
     directives: [],
-    styleUrls:['./app/stats-component.css']
+    styleUrls:['./app/stats-component.css'],
+    inputs:['dataSource','stats']
 
 })
 export class StatsComponent {
 
     public stats:Stats[];
-
+    public dataSource:Stats[];
     constructor( private objService: ObjectService){}
 
     columnDefs = [
@@ -35,12 +36,7 @@ export class StatsComponent {
 
     getStats(){
 
-        this.objService.getStats().then(stats => this.stats = stats);
+        this.stats = this.dataSource;
     }
-    // put data directly onto the controller
- /*   rowData = [
-        { make: "Toyota", model: "Celica", price: 35000 },
-        { make: "Ford", model: "Mondeo", price: 32000 },
-        { make: "Porsche", model: "Boxter", price: 72000 }
-    ];*/
+
 }

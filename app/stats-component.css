@@ -5,8 +5,15 @@
     border:solid 1px black;
     text-align: center;
 
-    padding:1px;
+    padding:5px;
 
+}
+
+.stats{
+
+    margin-top:5px ;
+    width: 1em;
+    background-color: white;
 }
 
 .headerCell{
@@ -16,6 +23,14 @@
     text-align: center;
     background-color: black;
     padding:1px;
+
+}
+
+.vertHeader{
+    color:white;
+    padding:1px;
+    background-color: black;
+    border:solid 1px black;
 
 }
 

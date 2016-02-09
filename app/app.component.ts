@@ -19,20 +19,20 @@ import {Stats} from './stats';
 @Component({
     selector: 'my-app',
     template:`
-    <h1 (click)="toggleFlip()">{{title}} {{selectedObject}} {{toggleIt}} {{player}}</h1>
+    <h1 (click)="toggleFlip()">{{title}}</h1>
     <div class="lefty">
-        <player-detail [(toggleIt)]="toggleIt" (toggle)="onToggle($event)" [(players)]="players"></player-detail>
+        <player-detail (toggle)="onToggle($event)" [(players)]="players"></player-detail>
     </div>
 
-    <div *ngIf="toggleIt" class="lefty">
-    <object-list [(selectedObject)]="selectedObject" [(object)]="object" [(player)]="player" [(objects)]="objects" ></object-list>
+    <div class="lefty">
+    <object-list [(toggleIt)]="toggleIt" (updateParent)="onUpdateParent($event)"></object-list>
     </div>
 
-    <div *ngIf="true" class="lefty">
-        <object-detail  [(player)]="player" [(object)]="object"></object-detail>
+    <div class="lefty">
+        <object-detail (updateStats)="onUpdateStats($event)" [(toggleDetail)]="toggleDetail" [(player)]="selectedPlayer"  [(object)]="selectedObject"></object-detail>
     </div>
-    <div *ngIf="false" style="border: solid 1px black;max-width: 400px" class="left">
-        <stats-grid [(stats)]="stats"></stats-grid>
+    <div class="lefty">
+        <stats-grid  [(stats)]="stats"></stats-grid>
     </div>
 
   `,
@@ -44,20 +44,21 @@ import {Stats} from './stats';
     }
 
 
-    @media (max-width: 700px) {
+    @media (max-width: 810px) {
     .lefty {
-        min-width: 175px !important;
+        min-width: 170px !important;
         height: auto !important;
         padding: 10px;
         display: inline-block;
+        width:400px;
     }
 
 }
 
 
   `],
-    directives: [PlayerDetailComponent,StatsComponent,ObjectListComponent],
-    inputs:['stats','toggleIt'],
+    directives: [PlayerDetailComponent,StatsComponent,ObjectListComponent,ObjectDetailComponent],
+    inputs:['stats','toggleIt','selectedPlayer'],
     //outputs:['toggleOutput'],
 
     providers: [
@@ -77,6 +78,7 @@ export class AppComponent implements OnInit {
     public selectedPlayer: Player;
     public selectedObject: Object;
     public toggleIt = false;
+    public toggleDetail = false;
 
 
     constructor( private _playerService: PlayerService, public http: Http, private _objectService: ObjectService) {
@@ -84,9 +86,12 @@ export class AppComponent implements OnInit {
     }
 
     onToggle(evt){
-        console.log('OnToggle');
-        console.log(evt);
-        this.toggleIt=evt.value;
+        console.log('OnToggle fired:',evt.value);
+        if(evt.value){
+            this.toggleIt=true;
+            this.selectedPlayer=evt.value;
+        }
+
 
     }
 
@@ -95,8 +100,14 @@ export class AppComponent implements OnInit {
         this.toggleIt=!this.toggleIt;
     }
 
-    onDetail(evt){
-        this.selectedObject = evt.value;
+    onUpdateParent(evt){
+
+        if(evt.value){
+            this.toggleDetail=true;
+            this.selectedObject = evt.value;
+        }
+
+        console.log('onUpdateParent fired:',evt.value);
 
     }
 
@@ -111,6 +122,13 @@ export class AppComponent implements OnInit {
         this.getStats();
 
 
+    }
+
+    onUpdateStats(event){
+
+        this.getStats();
+
+        console.log('onUpdateStats fired:');
     }
 
     getStats(){

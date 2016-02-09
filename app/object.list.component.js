@@ -5,12 +5,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require('angular2/core');
-var object_detail_component_1 = require('./object-detail.component');
 var object_service_1 = require('./object.service');
 var ObjectListComponent = (function () {
     function ObjectListComponent(_service) {
         this._service = _service;
-        this.upDateDetail = new core_1.EventEmitter();
+        this.updateParent = new core_1.EventEmitter();
     }
     ObjectListComponent.prototype.ngOnInit = function () {
         this.objects = this.getObjects();
@@ -19,24 +18,19 @@ var ObjectListComponent = (function () {
         var _this = this;
         this._service.getObjects().then(function (objects) { return _this.objects = objects; });
     };
-    ObjectListComponent.prototype.selectObject = function (object, player) {
+    ObjectListComponent.prototype.selectObject = function (object) {
         this.selectedObject = object;
-        this.selectedPlayer = player;
-        console.log('SelectedObject:', object, player);
+        console.log('updateParent fired:', object);
+        this.updateParent.emit({ value: this.selectedObject });
     };
-    ObjectListComponent.prototype.updateDetail = function (obj) {
-    };
-    __decorate([
-        core_1.Output()
-    ], ObjectListComponent.prototype, "upDateDetail");
     ObjectListComponent = __decorate([
         core_1.Component({
             selector: 'object-list',
             templateUrl: 'app/object-list.component.html',
-            directives: [object_detail_component_1.ObjectDetailComponent],
             styleUrls: ['app/object-list.component.css'],
             providers: [object_service_1.ObjectService],
-            inputs: ['player', 'object', 'selectedPlayer', 'selectedObject']
+            inputs: ['object', 'selectedObject', 'toggleIt'],
+            outputs: ['updateParent']
         })
     ], ObjectListComponent);
     return ObjectListComponent;

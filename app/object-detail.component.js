@@ -6,13 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require('angular2/core');
 var object_service_1 = require('./object.service');
+var stats_component_1 = require("./stats.component");
 var ObjectDetailComponent = (function () {
     function ObjectDetailComponent(_objService) {
         this._objService = _objService;
+        this.updateStats = new core_1.EventEmitter();
     }
     ObjectDetailComponent.prototype.go = function (oid, pid) {
-        console.log(oid);
+        console.log('oid', oid);
         this.results = this.getResult(pid, oid);
+        this.updateStats.emit();
+        console.log('updateStats fired');
     };
     ObjectDetailComponent.prototype.getResult = function (oid, pid) {
         var _this = this;
@@ -23,8 +27,10 @@ var ObjectDetailComponent = (function () {
             selector: 'object-detail',
             templateUrl: 'app/object-detail.component.html',
             styleUrls: ['app/object-detail.component.css'],
-            inputs: ['object', 'player'],
-            providers: [object_service_1.ObjectService]
+            inputs: ['object', 'player', 'toggleDetail'],
+            providers: [object_service_1.ObjectService],
+            outputs: ['updateStats'],
+            directives: [stats_component_1.StatsComponent]
         })
     ], ObjectDetailComponent);
     return ObjectDetailComponent;
