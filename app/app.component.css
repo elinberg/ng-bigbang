@@ -1,0 +1,30 @@
+.gitBadge{
+    width: 32px;
+}
+
+ul.share-buttons{
+    list-style: none;
+    padding: 0;
+}
+
+ul.share-buttons li{
+    display: inline;
+}
+
+.lefty {
+    display:inline-block;
+    vertical-align: top;
+    width: 20%;
+}
+
+
+@media (max-width: 810px) {
+    .lefty {
+        min-width: 170px !important;
+        height: auto !important;
+        padding: 10px;
+        display: inline-block;
+        width:400px;
+    }
+
+}

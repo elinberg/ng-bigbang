@@ -4,7 +4,7 @@
 }
 
 .results {
-    margin: 0 0 2em 0;
+    margin: 0 0 1em 0;
     list-style-type: none;
     padding: 0;
     width: 10em;
@@ -85,7 +85,7 @@ button img{
 
     display: block;
     border: solid 1px black ;
-    margin-top:2em !important;
+    margin-top:1em !important;
     width:7.5em;
     cursor: pointer;
     position: relative;

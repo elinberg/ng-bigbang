@@ -35,28 +35,21 @@ import {Stats} from './stats';
         <stats-grid  [(stats)]="stats"></stats-grid>
     </div>
 
+    <p>Follow me on Github or Share this application on Linkin or Facebook.
+    </p>
+
+    <ul class="share-buttons">
+    <li><a href="http://github.com/elinberg" title="Follow me on Github"><img width="32px" src="images/flat_web_icon_set/color/github_icon.png"></a></li>
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fericlinberg.com&t=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/color/Facebook.png"></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fericlinberg.com&title=&summary=&source=http%3A%2F%2Fericlinberg.com" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/color/LinkedIn.png"></a></li>
+  </ul>
+
+    <p>Single Page App front end built with Angular2
+
+    <p>RESTful API built with Symfony and PHP</p>
+
   `,
-    styles:[`
-    .lefty {
-        display:inline-block;
-        vertical-align: top;
-        width: 20%;
-    }
-
-
-    @media (max-width: 810px) {
-    .lefty {
-        min-width: 170px !important;
-        height: auto !important;
-        padding: 10px;
-        display: inline-block;
-        width:400px;
-    }
-
-}
-
-
-  `],
+    styleUrls:['app/app.component.css','node_modules/font-awesome/css/font-awesome.min.css'],
     directives: [PlayerDetailComponent,StatsComponent,ObjectListComponent,ObjectDetailComponent],
     inputs:['stats','toggleIt','selectedPlayer'],
     //outputs:['toggleOutput'],
