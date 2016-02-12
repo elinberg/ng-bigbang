@@ -10,7 +10,8 @@ export class PlayerService {
     constructor(public http: Http) {
     }
 
-    private _playersUrl = 'http://api.bigbang.ericlinberg.com:8000/players';
+    //private _playersUrl = 'http://api.bigbang.ericlinberg.com:8000/players';
+    private _playersUrl = 'http://localhost:8000/players';
 
 
     getPlayers() {

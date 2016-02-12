@@ -11,7 +11,8 @@ var ObjectService = (function () {
     function ObjectService(http) {
         this.http = http;
         //private _objectsUrl = '/app/object.json';
-        this._objectsUrl = 'http://api.bigbang.ericlinberg.com:8000/';
+        //private _objectsUrl = 'http://api.bigbang.ericlinberg.com:8000/';
+        this._objectsUrl = 'http://localhost:8000/';
     }
     ObjectService.prototype.getObjects = function () {
         return this.http.get(this._objectsUrl + 'objects')
