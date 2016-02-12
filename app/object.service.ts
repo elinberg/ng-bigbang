@@ -13,7 +13,7 @@ export class ObjectService {
     }
 
     //private _objectsUrl = '/app/object.json';
-    private _objectsUrl = 'http://localhost:8000/';
+    private _objectsUrl = 'http://api.bigbang.ericlinberg.com:8000/';
 
     getObjects() {
         return this.http.get(this._objectsUrl+'objects')
