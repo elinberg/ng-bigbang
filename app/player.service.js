@@ -10,9 +10,9 @@ var Observable_1 = require('rxjs/Observable');
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        //private _playersUrl = 'http://api.bigbang.ericlinberg.com:8000/players';
-        this._playersUrl = 'http://localhost:8000/players';
+        this._playersUrl = 'http://api.bigbang.ericlinberg.com:8000/players';
     }
+    //private _playersUrl = 'http://localhost:8000/players';
     PlayerService.prototype.getPlayers = function () {
         return this.http.get(this._playersUrl)
             .toPromise()

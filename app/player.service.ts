@@ -1,7 +1,6 @@
 import {Player} from './player'
 import {Injectable} from 'angular2/core';
-import {Http, Response} from 'angular2/http'
-import {Headers, RequestOptions} from 'angular2/http';
+import {Http, Response,Headers, RequestOptions} from 'angular2/http'
 import {Observable}     from 'rxjs/Observable';
 
 
@@ -10,8 +9,8 @@ export class PlayerService {
     constructor(public http: Http) {
     }
 
-    //private _playersUrl = 'http://api.bigbang.ericlinberg.com:8000/players';
-    private _playersUrl = 'http://localhost:8000/players';
+    private _playersUrl = 'http://api.bigbang.ericlinberg.com:8000/players';
+    //private _playersUrl = 'http://localhost:8000/players';
 
 
     getPlayers() {
